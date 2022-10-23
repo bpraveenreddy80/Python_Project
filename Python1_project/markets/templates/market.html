@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+{% block content %} 
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>  
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="row">
+    <div class="col-8" style="background-color: grey;" >
+      <h4 style="margin-left: 20px; margin-top: 20px;">Avaliable Items in the Market</h4>
+      <p style="margin-left: 20px; margin-top: 20px;">Select the items and Purchase</p>
+        <table class="table" style="margin-left: 20px; margin-top: 20px; margin-right:20px;">
+            <thead>
+                <tr>
+                    <th scope="col">Item Id</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">About</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in dic %}
+                {% include 'includes/items_models.html' %}
+                <tr>
+                    <td>
+                        {{ item.id }}
+                    </td>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        {{ item.price }}
+                    </td>
+                    <td>
+                        {{ item.barcode }}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm btn-outline" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                        <button type="button" class="btn btn-success btn-sm btn-outline" data-toggle="modal" data-target="#Modal-purchasecnf-{{ item.id }}">Purchase Item</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4" style="background-color:grey;">
+      <h4 style="margin-left: 20px; margin-top: 20px; margin-right:20px;">Owned Items</h4>
+      <p style="margin-left: 20px; margin-top: 20px; margin-right:20px;">Items you can Sell</p>
+      <div style="margin-left: 20px; margin-right: 20px;" class="text-center">
+        {% for owned_item in owned_items %}
+        {% include 'includes/owned_items.html' %}
+            <div class="card-header" >
+                {{ owned_item.name }}
+            </div>
+            <div class="card-body" >
+            <h5 class="card-title">{{ owned_item.name }}</h5>
+            <p class="card-text">Do U wanna sell the Item {{ owned_item.price }}$</p>
+            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#Modal-SellCnf-{{ owned_item.id }}">Sell Item</button>
+            </div>
+            <div class="card-footer text-muted">
+            2 days ago
+            </div>
+            <br>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,20 @@
+{% extends 'Register.html' %}
+
+{% block title %}
+    Praveen Coding Academy
+{% endblock %}
+
+{% block content %}
+
+<div class="card mb-3 " style="width: 100%; color:black;">
+    <!-- <img src="/images/images.jpeg" class="card-img-top" alt="..." width="300" height="505"> -->
+    <img src="https://thumbs.dreamstime.com/b/professional-development-programmer-working-programming-website-software-coding-technology-writing-codes-data-code-132331729.jpg" height="450px" style=""class="card-img-top"/>
+    <div class="card-body">
+      <h5 class="card-title"><strong>Praveen Coding Academy</strong></h5>
+      <p class="card-text" >There are four types of products and each is classified based on consumer habits, price, and product characteristics: convenience goods, shopping goods, specialty products, and unsought goods</p>
+      <p class="card-text"><small class="text-muted">Join and Register now</small></p>
+      <a href="{{ url_for('Login') }}" class="btn btn-primary btn-block">Get Started</a>
+    </div>
+  </div>
+
+{% endblock %}

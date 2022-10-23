@@ -1,0 +1,17 @@
+{% extends 'Register.html' %}
+{% block title %}
+    Add Item
+{% endblock %}
+{% block content %}
+<div  class='container-fluid' style="width: 65%" style="border:5px solid red;">
+    <form  method="post" class="form-register" style="color: white;">   
+            {{ form.hidden_tag() }}  
+            <h4>Enter Product Details</h4><br>
+            {{ form.name(class='form-control', placeholder='Product Name', autocomplete='off') }}<br>
+            {{ form.price(class='form-control', placeholder='Set Price', autocomplete='off')}}<br>
+            {{ form.barcode(class='form-control', placeholder='barcode', autocomplete='off')}}<br>
+            {{ form.description(class='form-control', placeholder='Product Description', autocomplete='off')}}<br>
+            {{ form.Submit(class="btn btn-info form-control btn-block") }}
+    </form>
+  </div>
+{% endblock %}

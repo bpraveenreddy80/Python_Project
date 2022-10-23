@@ -1,0 +1,22 @@
+{% extends 'Register.html' %}
+
+{% block title %}
+    User Login
+{% endblock %}
+{% block content %}
+
+<div  class='container-fluid' style="width: 65%" style="border:5px solid red;">
+    <form  method="post" class="form-register" style="color: white;">   
+            {{ form.hidden_tag() }}  
+            <h4>Login Account</h4><br>
+            {{ form.u_name(class='form-control', placeholder='User Name', autocomplete='off') }}<br>
+            {{ form.password(class='form-control', placeholder='Password', autocomplete='off')}}<br>
+            <p>Dont Have Account ?  &nbsp; &nbsp; Click Register Button ! </p>
+            <a class="btn btn-dark btn-sm" href=" {{ url_for('Register') }}" role="button" style="margin-left:3px;">Register</a>
+            <a class="btn btn-dark btn-sm" href="#" role="button" style="margin-left:3px;">Forgot Password</a><br><br>
+            {{ form.Submit(class="btn btn-info form-control btn-block") }}
+            
+    </form>
+  </div>
+
+{% endblock %}
